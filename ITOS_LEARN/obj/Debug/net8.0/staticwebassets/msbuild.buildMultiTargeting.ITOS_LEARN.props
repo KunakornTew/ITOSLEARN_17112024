@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\ITOS_LEARN.props" />
+</Project>

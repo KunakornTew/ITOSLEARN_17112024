@@ -1,0 +1,18 @@
+﻿@model IEnumerable<ITOS_LEARN.Models.User>
+
+<h2>People List</h2>
+<table>
+    <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Role</th>
+    </tr>
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.Username</td>
+            <td>@user.Email</td>
+            <td>@user.Role</td>
+        </tr>
+    }
+</table>
