@@ -22,13 +22,19 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
+                            @if (Context.Session.GetString("User") == null)
+                            {
+                                <a class="nav-link" href="/Account/Login">Login</a>
+                            }
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="/Home/Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/Account/Login">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/People/Index">Details</a>
+                            @if (Context.Session.GetString("User") != null)
+                            {
+                                <a class="nav-link" href="/People/Index">Details</a>
+                            }
                         </li>
                     </ul>
                 </div>
@@ -38,7 +44,7 @@
         {
             <div class="logout-container d-flex justify-content-end align-items-center">
                 <!-- แสดงชื่อผู้ใช้ทางซ้าย -->
-                <span class="username me-3">Currently in use : @Context.Session.GetString("User")</span>
+                <span class="username me-3">Currently in use: @Context.Session.GetString("User")</span>
 
                 <!-- ฟอร์ม Logout -->
                 <form method="post" action="/Account/Logout">
@@ -46,9 +52,7 @@
                 </form>
             </div>
         }
-
     </header>
-
 
     <div class="container">
         <main role="main" class="pb-3">

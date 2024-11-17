@@ -40,6 +40,10 @@ namespace ITOS_LEARN.Controllers
                 {
                     if (result == PasswordVerificationResult.Success)
                     {
+                        // เก็บข้อมูล username และ role ลงใน session
+                        HttpContext.Session.SetString("User", user.Username);
+                        HttpContext.Session.SetString("Role", user.Role); // เก็บบทบาทใน session
+
                         var login = new Login
                         {
                             Username = user.Username,

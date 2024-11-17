@@ -566,3 +566,4 @@ C:\Users\USER\Desktop\ITOS_LEARN-main\ITOS_LEARN\obj\Debug\net8.0\refint\ITOS_LE
 C:\Users\USER\Desktop\ITOS_LEARN-main\ITOS_LEARN\obj\Debug\net8.0\ITOS_LEARN.pdb
 C:\Users\USER\Desktop\ITOS_LEARN-main\ITOS_LEARN\obj\Debug\net8.0\ITOS_LEARN.genruntimeconfig.cache
 C:\Users\USER\Desktop\ITOS_LEARN-main\ITOS_LEARN\obj\Debug\net8.0\ref\ITOS_LEARN.dll
+C:\Users\USER\Desktop\ITOS_LEARN-main\ITOS_LEARN\obj\Debug\net8.0\ITOS_LEARN.sourcelink.json

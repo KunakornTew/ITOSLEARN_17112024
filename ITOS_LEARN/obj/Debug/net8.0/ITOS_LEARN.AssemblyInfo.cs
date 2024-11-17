@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ITOS_LEARN")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+019e539dbe799643da2c71b02722927436e29405")]
 [assembly: System.Reflection.AssemblyProductAttribute("ITOS_LEARN")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ITOS_LEARN")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

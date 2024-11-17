@@ -1,10 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ITOS_LEARN.Models;
 using ITOS_LEARN.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using System;
 
 namespace ITOS_LEARN.Controllers
 {
@@ -20,6 +17,11 @@ namespace ITOS_LEARN.Controllers
         // GET: People
         public async Task<IActionResult> Index(string searchTerm)
         {
+            if (HttpContext.Session.GetString("User") == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
             // ส่งค่าของ searchTerm ไปยัง View
             ViewData["SearchTerm"] = searchTerm;
 
@@ -53,6 +55,11 @@ namespace ITOS_LEARN.Controllers
         // GET: People/Create
         public IActionResult Create()
         {
+            if (HttpContext.Session.GetString("User") == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
             return View();
         }
 
@@ -61,6 +68,11 @@ namespace ITOS_LEARN.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Person person)
         {
+            if (HttpContext.Session.GetString("User") == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
             // ตรวจสอบ ModelState ก่อนดำเนินการ
             if (!ModelState.IsValid)
             {
@@ -82,20 +94,24 @@ namespace ITOS_LEARN.Controllers
         // GET: People/Edit/5
         public async Task<IActionResult> Edit(int? id)
 {
-    if (id == null)
-    {
-        return NotFound();
-    }
+            if (HttpContext.Session.GetString("User") == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-    if (!ModelState.IsValid)
-    {
-        var person = await _context.People.FindAsync(id);
-        if (person == null)
-        {
-            return NotFound();
+            if (!ModelState.IsValid)
+            {
+             var person = await _context.People.FindAsync(id);
+               if (person == null)
+            {
+                return NotFound();
+            }
+                return View(person);
         }
-        return View(person);
-    }
 
     // ถ้าผ่านการตรวจสอบ ModelState แล้ว
     var personToUpdate = await _context.People.FindAsync(id);
@@ -114,6 +130,11 @@ namespace ITOS_LEARN.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Person person)
         {
+            if (HttpContext.Session.GetString("User") == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
             if (id != person.ID)
             {
                 return NotFound();
@@ -140,6 +161,11 @@ namespace ITOS_LEARN.Controllers
         // GET: People/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            if (HttpContext.Session.GetString("User") == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
             if (ModelState.IsValid)
             {
                 if (id == null)
@@ -164,6 +190,11 @@ namespace ITOS_LEARN.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            if (HttpContext.Session.GetString("User") == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
             // ตรวจสอบ ModelState ก่อนดำเนินการ
             if (!ModelState.IsValid)
             {

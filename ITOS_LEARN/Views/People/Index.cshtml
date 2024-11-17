@@ -7,7 +7,7 @@
 
 <!-- ปุ่มค้นหา -->
 <form method="get">
-    <input type="text" name="searchTerm" placeholder="SearchFirtname, Lastname, Birthday, Jobposition หรือ ID" value="@ViewData["SearchTerm"]" />
+    <input type="text" name="searchTerm" placeholder="Search Firstname, Lastname, Birthday, Jobposition หรือ ID" value="@ViewData["SearchTerm"]" />
     <button type="submit">Search</button>
 </form>
 
@@ -15,9 +15,9 @@
     <thead>
         <tr>
             <th>ID</th>
-            <th>Firtname</th>
+            <th>Firstname</th>
             <th>Lastname</th>
-            <th>Birtday</th>
+            <th>Birthday</th>
             <th>Email</th>
             <th>Phone</th>
             <th>Jobposition</th>
@@ -36,13 +36,24 @@
                 <td>@person.PhoneNumber</td>
                 <td>@person.JobPosition</td>
                 <td>
-                    <a href="@Url.Action("Edit", new { id = person.ID })">Edit</a> |
-                    <a href="@Url.Action("Delete", new { id = person.ID })" style = "color:red" >Delete</a>
+                    @if (Context.Session.GetString("Role") == "Admin")
+                    {
+                        <!-- แสดงปุ่ม Edit และ Delete สำหรับ Admin -->
+                    <a href="@Url.Action("Edit", new { id = person.ID })">Edit</a>
+                    <a href = "@Url.Action("Delete", new { id = person.ID })" style = "color:red">Delete</a>
+                    }
+                    else
+                    {
+                        <!-- สำหรับ User จะแค่แสดงข้อมูล -->
+                        <span>View Only</span>
+                    }
                 </td>
             </tr>
         }
     </tbody>
 </table>
 
-<a asp-action="Create">Add new person</a>
-
+@if (Context.Session.GetString("Role") == "Admin")
+{
+    <a asp-action="Create">Add new person</a> <!-- แสดงปุ่มนี้เฉพาะ Admin -->
+}

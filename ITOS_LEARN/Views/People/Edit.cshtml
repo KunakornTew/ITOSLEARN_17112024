@@ -34,7 +34,9 @@
         <input asp-for="JobPosition" class="form-control" />
         <span asp-validation-for="JobPosition" class="text-danger"></span>
     </div>
-    <button type="submit" class="btn btn-primary">Save changes</button>
+
+    <!-- เพิ่มคลาส mt-3 สำหรับเพิ่มระยะห่างด้านบน -->
+    <button type="submit" class="btn btn-primary mt-3">Save changes</button>
 </form>
 
-<a asp-action="Index">Back to the person list</a>
+<a asp-action="Index" class="d-block mt-3">Back to the person list</a>
